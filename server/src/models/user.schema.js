@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import AuthRoles from "../utils/AuthRoles"
+import AuthRoles from "../utils/authRoles.js"
 import bcrypt, { compare } from "bcryptjs";
 import JWT from "jsonwebtoken";
 import config from "../config/index.js";
@@ -45,7 +45,7 @@ userSchema.methods = {
     },
     // generate JWT Token
     getJWTtoken: function(){
-        JWT.sign({_id:this._id}, config.JWT_SECRET,
+        return JWT.sign({_id:this._id}, config.JWT_SECRET,
         {
             expiresIn: config.JWT_EXPIRY
         })
